@@ -23,11 +23,4 @@ public class Server {
         server.start();
     }
 
-    public byte[] getRandomByte(){
-        byte[] b = new byte[2048];
-        new Random().nextBytes(b);
-        return b;
-    }
-
-
 }

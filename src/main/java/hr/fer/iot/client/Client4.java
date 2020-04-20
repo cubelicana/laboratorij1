@@ -14,8 +14,8 @@ public class Client4 {
         client.useCONs();   //useNONs
         //System.out.println("PING resource:" + client.ping());
         try {
-            String text = client.get(MediaTypeRegistry.APPLICATION_OCTET_STREAM).getResponseText();
-            System.out.println("Response: "+ text);
+            client.get(MediaTypeRegistry.APPLICATION_OCTET_STREAM).getResponseText();
+
         } catch (ConnectorException | IOException e) {
             System.err.println(e.getLocalizedMessage());
         }
