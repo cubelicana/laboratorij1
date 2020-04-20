@@ -30,7 +30,7 @@ public class TemperatureResource extends CoapResource {
 
     @Override
     public void handleGET(CoapExchange exchange) {
-        //exchange.accept();
+        exchange.accept();
         System.out.println("GET " + TemperatureResource.class.getName());
         exchange.respond(CoAP.ResponseCode.CONTENT, "Temperature: " + getTemperature()); // reply with 2.05 payload (text/plain)
     }
