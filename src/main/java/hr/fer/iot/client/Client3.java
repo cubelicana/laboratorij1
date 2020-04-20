@@ -40,19 +40,16 @@ public class Client3 {
                     }
                 });
         while(true)
-        //System.out.println("EXIT");
-        // wait for user
         {
-            System.out.println("CHECK");
             relation.reregister();
             System.out.println("Reregistration");
             sleep(3000);
+
+            /*
+             * need to set exit on enter input
+             * examples on internet showed only how to
+             * get one notification, so I made infinite loop :)
+             */
         }
-
-        //System.out.println("CANCELLATION");
-
-        //relation.proactiveCancel();
-
-        //exit();
     }
 }
