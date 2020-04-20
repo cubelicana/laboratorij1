@@ -9,6 +9,8 @@ import org.eclipse.californium.core.server.resources.Resource;
 
 import java.util.Random;
 
+import static java.lang.Thread.sleep;
+
 public class SensorsResource extends CoapResource {
 
     public SensorsResource(String name) {
@@ -35,11 +37,30 @@ public class SensorsResource extends CoapResource {
         Server.server.add(resource);
 
         exchange.respond(CoAP.ResponseCode.CREATED, "New resource is added to server");
+        changeTempValue(childPath);
     }
 
     private String getRandomNumber(){
         Random random = new Random();
         int rand_int = random.nextInt(1000);
         return String.valueOf(rand_int);
+    }
+
+    private void changeTempValue(String childPath){
+        while(true) {
+            try {
+                sleep(3000);
+                TemperatureResource temperatureResource = new TemperatureResource(childPath);
+                String temp = getRandomNumber();
+                temperatureResource.setTemperature(temp);
+                this.add(temperatureResource);
+                Server.server.add(this);
+                //System.out.println("Temperature set to: " + temp);
+                changed();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
